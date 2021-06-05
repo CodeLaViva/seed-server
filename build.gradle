@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: "./scripts/gradle/config.gradle"
+apply from: "./scripts/dependencies.gradle"
 
 
 repositories {
