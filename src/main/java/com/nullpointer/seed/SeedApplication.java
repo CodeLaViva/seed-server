@@ -3,6 +3,9 @@ package com.nullpointer.seed;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author lihongzheng
+ */
 @SpringBootApplication
 public class SeedApplication {
 
