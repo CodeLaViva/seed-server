@@ -7,6 +7,7 @@ plugins {
 apply from: "./scripts/gradle/config.gradle"
 apply from: "./scripts/gradle/dependencies.gradle"
 
+compileJava.inputs.files(processResources)
 
 repositories {
     maven {

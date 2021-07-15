@@ -5,6 +5,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 
+    // configuration-processor dependency
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
