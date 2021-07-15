@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "app.environment",
+      "type": "java.lang.String",
+      "description": "The environment for project, default is dev."
+    }
+  ]
+}
