@@ -1,12 +1,14 @@
 package com.nullpointer.seed.services;
 
 import com.nullpointer.seed.models.Sample;
+import org.springframework.stereotype.Service;
 
 /**
  * @author lihongzheng
  * @date 2021/6/6
  * @description
  */
+@Service
 public interface SampleService {
 
     Sample save(Sample sample);
@@ -15,7 +17,7 @@ public interface SampleService {
 
     Sample patch(Sample sample);
 
-    Boolean delete(String id);
+    Boolean delete(int id);
 
-    Sample get(String id);
+    Sample get(int id);
 }

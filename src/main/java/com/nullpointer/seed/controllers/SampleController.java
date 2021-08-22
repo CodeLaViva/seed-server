@@ -2,6 +2,7 @@ package com.nullpointer.seed.controllers;
 
 import com.nullpointer.seed.configs.Setting;
 import com.nullpointer.seed.models.Sample;
+import com.nullpointer.seed.services.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +17,22 @@ import org.springframework.web.bind.annotation.*;
 public class SampleController {
 
     private final Setting setting;
+    private final SampleService service;
 
     @Value("${app.environment}")
     private String environment;
 
     @Autowired
-    public SampleController(Setting setting) {
+    public SampleController(Setting setting, SampleService service) {
         this.setting = setting;
+        this.service = service;
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<String> get(@PathVariable String id) {
-        return ResponseEntity.ok(String.format("Request Id: %s, current environment: %s， %s", id, setting.getEnvironment(), environment));
+    public ResponseEntity<Sample> get(@PathVariable int id) {
+        Sample sample = service.get(id);
+        // return ResponseEntity.ok(String.format("Request Id: %s, current environment: %s， %s", id, setting.getEnvironment(), environment));
+        return ResponseEntity.ok(sample);
     }
 
     @DeleteMapping("{id}")

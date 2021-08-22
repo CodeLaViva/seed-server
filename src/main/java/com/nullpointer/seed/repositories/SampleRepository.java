@@ -1,5 +1,7 @@
 package com.nullpointer.seed.repositories;
 
+import com.nullpointer.seed.entities.SampleEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,5 +9,7 @@ import org.springframework.stereotype.Repository;
  * @date 2021/6/6
  * @description
  */
-public interface SampleRepository extends Repository {
+@Repository
+public interface SampleRepository extends JpaRepository<SampleEntity, Integer> {
+    SampleEntity findSampleEntityByIdAndName(int id, String name);
 }

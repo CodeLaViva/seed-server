@@ -13,6 +13,10 @@ repositories {
     maven {
         url 'http://maven.aliyun.com/nexus/content/groups/public/'
     }
+    maven {
+        url 'https://repo.maven.apache.org/maven2'
+        name 'Maven Central'
+    }
 }
 
 // 子项目通用配置
