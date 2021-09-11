@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * @date 2021/6/6
  * @description
  */
-@Service
 public interface SampleService {
 
     Sample save(Sample sample);

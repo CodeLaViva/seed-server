@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
  * @date 2021/6/6
  * @description sample controller, follow by restful
  */
-@RestController("/sample")
+@RestController
+@RequestMapping("/sample")
 public class SampleController {
 
     private final Setting setting;
@@ -31,7 +32,6 @@ public class SampleController {
     @GetMapping("{id}")
     public ResponseEntity<Sample> get(@PathVariable int id) {
         Sample sample = service.get(id);
-        // return ResponseEntity.ok(String.format("Request Id: %s, current environment: %s， %s", id, setting.getEnvironment(), environment));
         return ResponseEntity.ok(sample);
     }
 
