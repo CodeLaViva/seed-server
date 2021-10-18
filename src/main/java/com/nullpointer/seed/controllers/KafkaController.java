@@ -3,9 +3,7 @@ package com.nullpointer.seed.controllers;
 import com.nullpointer.seed.models.KafkaMessage;
 import com.nullpointer.seed.models.Topic;
 import com.nullpointer.seed.services.KafkaService;
-import org.apache.kafka.clients.admin.TopicListing;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,7 +56,16 @@ public class KafkaController {
         for (int i = 0; i < 5; i++) {
             flag = kafkaService.producerSendBoolean(message);
         }
-//        kafkaService.producerSend(message);
+        kafkaService.producerSend(message);
+        return ResponseEntity.ok(flag);
+    }
+
+    @PostMapping("sendPartition")
+    public ResponseEntity<Boolean> sendPartition(@RequestBody KafkaMessage message) {
+        boolean flag = false;
+        for (int i = 0; i < 5; i++) {
+            flag = kafkaService.producerSendBoolean(message);
+        }
         return ResponseEntity.ok(flag);
     }
 
