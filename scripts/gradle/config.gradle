@@ -2,7 +2,7 @@
 group 'com.nullpointer'
 // 版本号
 version '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 ext {
     // jar包所在模块名称
@@ -12,7 +12,7 @@ ext {
     // jar包版本
     jarVersion = version
     // maven仓库地址
-    mavenUrl =  'http://maven.aliyun.com/nexus/content/groups/public/'
+    mavenUrl =  'https://maven.aliyun.com/nexus/content/groups/public/'
     // docker镜像版本号
 //    imageVersion = project.hasProperty('imageVersion')? imageVersion : version
 }
