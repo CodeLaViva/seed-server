@@ -3,6 +3,7 @@ package com.nullpointer.seed.controllers;
 import com.nullpointer.seed.configs.Setting;
 import com.nullpointer.seed.models.Sample;
 import com.nullpointer.seed.services.SampleService;
+import com.nullpointer.seed.services.impls.SampleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -41,8 +42,8 @@ public class SampleController {
     }
 
     @PostMapping()
-    public ResponseEntity<Sample> save(@RequestParam Sample sample) {
-        return ResponseEntity.ok(sample);
+    public ResponseEntity<Sample> save(@RequestBody Sample sample) {
+        return ResponseEntity.ok(service.save(sample));
     }
 
     @PutMapping()
