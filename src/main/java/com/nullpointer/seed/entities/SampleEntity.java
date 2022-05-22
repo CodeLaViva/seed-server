@@ -3,6 +3,9 @@ package com.nullpointer.seed.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * @author lihongzheng
@@ -10,6 +13,7 @@ import javax.persistence.Id;
  * @description
  */
 @Entity
+@Table(name = "sample_entity")
 public class SampleEntity {
     /**
      * sample id
@@ -23,18 +27,31 @@ public class SampleEntity {
     @Column
     private String name;
     /**
-     * sample description
+     * sample age
      */
     @Column
-    private String description;
+    private int age;
+    /**
+     * sample birthday
+     */
+    @Column
+    private Date birthday;
 
-    public SampleEntity() {
-    }
+    @Column(name = "created_at")
+    private Date createdAt;
+    @Column(name = "updated_at")
+    private Date updatedAt = Date.valueOf(LocalDate.now());
 
-    public SampleEntity(int id, String name, String description) {
+    public SampleEntity(int id, String name, int age, Date birthday, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.age = age;
+        this.birthday = birthday;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public SampleEntity() {
     }
 
     public int getId() {
@@ -53,11 +70,35 @@ public class SampleEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getAge() {
+        return age;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
