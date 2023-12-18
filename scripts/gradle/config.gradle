@@ -2,7 +2,7 @@
 group 'com.nullpointer'
 // 版本号
 version '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 ext {
     // jar包所在模块名称
@@ -12,24 +12,7 @@ ext {
     // jar包版本
     jarVersion = version
     // maven仓库地址
-    mavenUrl =  'http://maven.aliyun.com/nexus/content/groups/public/'
+    mavenUrl =  'https://maven.aliyun.com/nexus/content/groups/public/'
     // docker镜像版本号
-    imageVersion = project.hasProperty('imageVersion')? imageVersion : version
-
-//    dockerConfig = [
-//            // docker远端构建进程配置地址
-//            url : 'http://172.22.3.101:2375/',
-//            // docker发布仓库地址及认证信息
-//            registryCredentials : [
-//                    // 发布的镜像仓库地址
-//                    url : 'http://172.22.3.5:9001',
-//                    username : 'zhanghao',
-//                    password : '123456',
-//                    email : 'admin@example.com'
-//            ],
-//            // image镜像对应的前缀域名  --依据实际项目修改
-//            imageDomain:'172.22.3.5:9001/pdd',
-//            // 发布类型 jar or war，暂时只支持jar  --依据实际项目修改
-//            publishType: 'jar'
-//    ]
+//    imageVersion = project.hasProperty('imageVersion')? imageVersion : version
 }

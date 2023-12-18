@@ -9,7 +9,7 @@ public class Sample {
     /**
      * sample id
      */
-    private String id;
+    private int id;
     /**
      * sample name
      */
@@ -22,17 +22,17 @@ public class Sample {
     public Sample() {
     }
 
-    public Sample(String id, String name, String description) {
+    public Sample(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

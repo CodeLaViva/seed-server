@@ -2,6 +2,8 @@ package com.nullpointer.seed.controllers;
 
 import com.nullpointer.seed.configs.Setting;
 import com.nullpointer.seed.models.Sample;
+import com.nullpointer.seed.services.SampleService;
+import com.nullpointer.seed.services.impls.SampleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -12,22 +14,26 @@ import org.springframework.web.bind.annotation.*;
  * @date 2021/6/6
  * @description sample controller, follow by restful
  */
-@RestController("/sample")
+@RestController
+@RequestMapping("/sample")
 public class SampleController {
 
     private final Setting setting;
+    private final SampleService service;
 
     @Value("${app.environment}")
     private String environment;
 
     @Autowired
-    public SampleController(Setting setting) {
+    public SampleController(Setting setting, SampleService service) {
         this.setting = setting;
+        this.service = service;
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<String> get(@PathVariable String id) {
-        return ResponseEntity.ok(String.format("Request Id: %s, current environment: %s， %s", id, setting.getEnvironment(), environment));
+    public ResponseEntity<Sample> get(@PathVariable int id) {
+        Sample sample = service.get(id);
+        return ResponseEntity.ok(sample);
     }
 
     @DeleteMapping("{id}")
@@ -36,8 +42,8 @@ public class SampleController {
     }
 
     @PostMapping()
-    public ResponseEntity<Sample> save(@RequestParam Sample sample) {
-        return ResponseEntity.ok(sample);
+    public ResponseEntity<Sample> save(@RequestBody Sample sample) {
+        return ResponseEntity.ok(service.save(sample));
     }
 
     @PutMapping()
