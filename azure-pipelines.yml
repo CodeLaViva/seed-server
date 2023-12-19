@@ -20,6 +20,8 @@ jobs:
         inputs:
           versionSpec: '17.0.1'
           jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'Installer'
+          cleanDestinationDirectory: true
       - task: Gradle@1
         inputs:
           workingDirectory: ''
