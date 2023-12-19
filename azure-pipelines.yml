@@ -25,10 +25,10 @@ jobs:
       - task: Gradle@1
         inputs:
           workingDirectory: ''
+          versionSpec: '17'
           gradleWrapperFile: 'gradlew'
           gradleOptions: '-Xmx3072m'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '17'
           jdkArchitectureOption: 'x64'
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
