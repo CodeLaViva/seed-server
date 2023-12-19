@@ -18,7 +18,7 @@ jobs:
     steps:
       - task: JavaToolInstaller@0
         inputs:
-          versionSpec: '17.0'
+          versionSpec: '17.0.2'
           jdkArchitectureOption: 'x64'
           jdkSourceOption: 'Installer'
           cleanDestinationDirectory: true
