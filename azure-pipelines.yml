@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  java.version: '17.x'
+  java.version: '17.0.1'
 
 jobs:
   - job: Build
