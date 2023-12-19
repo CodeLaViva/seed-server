@@ -9,15 +9,26 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+variables:
+  java.version: '17.x'
+
+jobs:
+  - job: Build
+    displayName: 'Build Job'
+    steps:
+      - task: UseJavaVersion@0
+        inputs:
+          versionSpec: '$(java.version)'
+          addToPath: true
+      - task: Gradle@1
+        inputs:
+          workingDirectory: ''
+          gradleWrapperFile: 'gradlew'
+          gradleOptions: '-Xmx3072m'
+#          javaHomeOption: 'JDKVersion'
+#          jdkVersionOption: '1.8'
+#          jdkArchitectureOption: 'x64'
+#          publishJUnitResults: true
+#          testResultsFiles: '**/TEST-*.xml'
+          tasks: 'build'
+
