@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 /**
  * @author lihongzheng
  */
-@SpringBootApplication()
+@SpringBootApplication
 @EnableJpaRepositories
 public class SeedApplication {
 

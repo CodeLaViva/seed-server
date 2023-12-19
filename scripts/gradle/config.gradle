@@ -1,7 +1,7 @@
 // group 名称
 group 'com.nullpointer'
 // 版本号
-version '0.0.1-SNAPSHOT'
+version '1.0-SNAPSHOT'
 sourceCompatibility = '17'
 
 ext {
