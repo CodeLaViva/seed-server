@@ -16,13 +16,17 @@ jobs:
   - job: Build
     displayName: 'Build Job'
     steps:
+      - task: JavaToolInstaller@0
+        inputs:
+          versionSpec: '17.0.1'
+          jdkArchitectureOption: 'x64'
       - task: Gradle@1
         inputs:
           workingDirectory: ''
           gradleWrapperFile: 'gradlew'
           gradleOptions: '-Xmx3072m'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '17'
+          jdkVersionOption: '17.0.1'
           jdkArchitectureOption: 'x64'
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
