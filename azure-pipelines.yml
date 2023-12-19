@@ -18,9 +18,9 @@ jobs:
     steps:
       - task: JavaToolInstaller@0
         inputs:
-          versionSpec: '17.0.2'
+          versionSpec: '17'
           jdkArchitectureOption: 'x64'
-          jdkSourceOption: 'Installer'
+          jdkSourceOption: 'PreInstalled'
           cleanDestinationDirectory: true
       - task: Gradle@1
         inputs:
@@ -28,7 +28,7 @@ jobs:
           gradleWrapperFile: 'gradlew'
           gradleOptions: '-Xmx3072m'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '17.0'
+          jdkVersionOption: '17.0.2'
           jdkArchitectureOption: 'x64'
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
