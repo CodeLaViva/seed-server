@@ -1,9 +1,10 @@
 package com.nullpointer.seed.services.impls;
 
+import com.nullpointer.seed.dto.request.SampleRequest;
+import com.nullpointer.seed.dto.response.SampleResponse;
 import com.nullpointer.seed.entities.SampleEntity;
 import com.nullpointer.seed.mappers.SampleMapper;
-import com.nullpointer.seed.models.Sample;
-import com.nullpointer.seed.repositories.SampleEntityRepository;
+import com.nullpointer.seed.repositories.SampleRepository;
 import com.nullpointer.seed.services.SampleService;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +16,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class SampleServiceImpl implements SampleService {
 
-    private final SampleEntityRepository sampleEntityRepository;
+    private final SampleRepository sampleEntityRepository;
     private final SampleMapper sampleMapper;
 
 
-    public SampleServiceImpl(SampleEntityRepository sampleEntityRepository, SampleMapper sampleMapper) {
+    public SampleServiceImpl(SampleRepository sampleEntityRepository, SampleMapper sampleMapper) {
         this.sampleEntityRepository = sampleEntityRepository;
         this.sampleMapper = sampleMapper;
     }
 
     @Override
-    public Sample save(Sample sample) {
-        SampleEntity sampleEntity = sampleMapper.toEntity(sample);
+    public SampleResponse save(SampleRequest request) {
+        SampleEntity sampleEntity = sampleMapper.toEntity(request);
         var savedEntity = sampleEntityRepository.save(sampleEntity);
-        return sampleMapper.toDto(savedEntity);
+        return sampleMapper.toResponse(savedEntity);
     }
 
     @Override
-    public Sample update(Sample sample) {
+    public SampleResponse update(SampleRequest request) {
         return null;
     }
 
     @Override
-    public Sample patch(Sample sample) {
+    public SampleResponse patch(SampleRequest request) {
         return null;
     }
 
@@ -47,7 +48,7 @@ public class SampleServiceImpl implements SampleService {
     }
 
     @Override
-    public Sample get(int id) {
-        return sampleMapper.toDto(sampleEntityRepository.findById(id).orElse(new SampleEntity()));
+    public SampleResponse get(int id) {
+        return sampleMapper.toResponse(sampleEntityRepository.findById(id).orElse(new SampleEntity()));
     }
 }

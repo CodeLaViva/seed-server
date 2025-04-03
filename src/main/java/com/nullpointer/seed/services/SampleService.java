@@ -1,7 +1,7 @@
 package com.nullpointer.seed.services;
 
-import com.nullpointer.seed.models.Sample;
-import org.springframework.stereotype.Service;
+import com.nullpointer.seed.dto.request.SampleRequest;
+import com.nullpointer.seed.dto.response.SampleResponse;
 
 /**
  * @author lihongzheng
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
  */
 public interface SampleService {
 
-    Sample save(Sample sample);
+    SampleResponse save(SampleRequest request);
 
-    Sample update(Sample sample);
+    SampleResponse update(SampleRequest request);
 
-    Sample patch(Sample sample);
+    SampleResponse patch(SampleRequest request);
 
     Boolean delete(int id);
 
-    Sample get(int id);
+    SampleResponse get(int id);
 }

@@ -1,11 +1,14 @@
 package com.nullpointer.seed.controllers;
 
-import com.nullpointer.seed.configs.Setting;
-import com.nullpointer.seed.models.Sample;
+import com.nullpointer.seed.annotation.MonitorPerformance;
+import com.nullpointer.seed.clients.SampleClient;
+import com.nullpointer.seed.dto.request.SampleRequest;
+import com.nullpointer.seed.dto.response.SampleResponse;
 import com.nullpointer.seed.services.SampleService;
-import com.nullpointer.seed.services.impls.SampleServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,43 +19,37 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/sample")
-public class SampleController {
+@Slf4j
+@AllArgsConstructor
+public class SampleController implements SampleClient {
 
-    private final Setting setting;
     private final SampleService service;
 
-    @Value("${app.environment}")
-    private String environment;
-
-    @Autowired
-    public SampleController(Setting setting, SampleService service) {
-        this.setting = setting;
-        this.service = service;
+    @MonitorPerformance
+    public ResponseEntity<SampleResponse> getSample(@PathVariable Integer id) {
+        log.info("获取样本信息，id: {}", id);
+        SampleResponse response = service.get(id);
+        return ResponseEntity.ok(response);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<Sample> get(@PathVariable int id) {
-        Sample sample = service.get(id);
-        return ResponseEntity.ok(sample);
+    @MonitorPerformance
+    public ResponseEntity<SampleResponse> createSample(@Valid @RequestBody SampleRequest request) {
+        log.info("创建新样本: {}", request);
+        SampleResponse response = service.save(request);
+        return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable String id) {
-        return id.isEmpty() ? ResponseEntity.ok(false) : ResponseEntity.ok(true);
+
+    public ResponseEntity<Boolean> deleteSample(@PathVariable("id") Integer id) {
+        var response = service.delete(id);
+        return ResponseEntity.ok(response);
     }
 
-    @PostMapping()
-    public ResponseEntity<Sample> save(@RequestBody Sample sample) {
-        return ResponseEntity.ok(service.save(sample));
+    public ResponseEntity<SampleResponse> update(@RequestParam SampleRequest sample) {
+        return ResponseEntity.ok(null);
     }
 
-    @PutMapping()
-    public ResponseEntity<Sample> update(@RequestParam Sample sample) {
-        return ResponseEntity.ok(sample);
-    }
-
-    @PatchMapping()
-    public ResponseEntity<Sample> patch(@RequestParam Sample sample) {
-        return ResponseEntity.ok(sample);
+    public ResponseEntity<SampleResponse> patch(@RequestParam SampleRequest sample) {
+        return ResponseEntity.ok(null);
     }
 }
