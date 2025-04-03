@@ -96,7 +96,7 @@ tasks.named('test') {
 // Add dependency updates configuration
 dependencyUpdates {
     checkConstraints = true
-    outputFormatter = 'html'  // Creates an HTML report
+    outputFormatter = 'html'
     outputDir = "build/dependency-reports"
     reportfileName = 'report'
 }
