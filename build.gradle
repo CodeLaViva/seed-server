@@ -1,24 +1,92 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
-apply from: "./scripts/gradle/config.gradle"
-apply from: "./scripts/gradle/dependencies.gradle"
+group = 'com.nullpointer'
+version = '0.0.1-SNAPSHOT'
 
-compileJava.inputs.files(processResources)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+ext {
+    set('springCloudVersion', "2023.0.1")
+    jarProjectName = 'com.nullpointer.seed'
+    jarArchivesBaseName = 'com.nullpointer.seed'
+    jarVersion = version
+    imageVersion = project.hasProperty('imageVersion') ? imageVersion : version
+}
 
 repositories {
+    mavenCentral()
     maven {
         url 'https://maven.aliyun.com/nexus/content/groups/public/'
-    }
-    maven {
-        url 'https://repo.maven.apache.org/maven2'
-        name 'Maven Central'
+        allowInsecureProtocol = false
     }
 }
 
-// 子项目通用配置
-subprojects {
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
+
+dependencies {
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // Spring Cloud
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    
+    // Database
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+    
+    // Utils
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    implementation 'com.alibaba:fastjson:2.0.45'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    
+    // Kafka
+    implementation 'org.springframework.kafka:spring-kafka'
+    
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // Annotation Processors
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    
+    // Test Dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testcontainers:testcontainers:1.19.3'
+    testImplementation 'org.testcontainers:junit-jupiter:1.19.3'
+    testImplementation 'org.testcontainers:mysql:1.19.3'
+    testImplementation 'com.h2database:h2'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Git hooks installation task
+// task installGitHooks(type: Copy) {
+//     from new File(rootProject.rootDir, './scripts/git/pre-commit')
+//     from new File(rootProject.rootDir, './scripts/git/commit-msg')
+//     into { new File(project.projectDir, './.git/hooks') }
+// }
