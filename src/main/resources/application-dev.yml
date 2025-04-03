@@ -1,0 +1,10 @@
+app:
+  environment: dev
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sample
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:1234567}
+  kafka:
+    bootstrap-servers: b-1.cpskafkastg.n37ial.c2.kafka.cn-north-1.amazonaws.com.cn:9096,b-2.cpskafkastg.n37ial.c2.kafka.cn-north-1.amazonaws.com.cn:9096
