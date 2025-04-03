@@ -1,4 +1,4 @@
-package com.nullpointer.seed.configs;
+package com.nullpointer.seed.common.configs;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

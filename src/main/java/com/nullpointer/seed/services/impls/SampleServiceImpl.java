@@ -3,7 +3,7 @@ package com.nullpointer.seed.services.impls;
 import com.nullpointer.seed.dto.request.SampleRequest;
 import com.nullpointer.seed.dto.response.SampleResponse;
 import com.nullpointer.seed.entities.SampleEntity;
-import com.nullpointer.seed.mappers.SampleMapper;
+import com.nullpointer.seed.services.mappers.SampleMapper;
 import com.nullpointer.seed.repositories.SampleRepository;
 import com.nullpointer.seed.services.SampleService;
 import org.springframework.stereotype.Service;

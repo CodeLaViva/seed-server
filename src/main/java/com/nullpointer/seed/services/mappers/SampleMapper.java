@@ -1,4 +1,4 @@
-package com.nullpointer.seed.mappers;
+package com.nullpointer.seed.services.mappers;
 
 import com.nullpointer.seed.dto.request.SampleRequest;
 import com.nullpointer.seed.dto.response.SampleResponse;

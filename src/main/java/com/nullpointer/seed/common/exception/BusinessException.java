@@ -1,4 +1,4 @@
-package com.nullpointer.seed.exception;
+package com.nullpointer.seed.common.exception;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.nullpointer.seed.configs;
+package com.nullpointer.seed.common.configs;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class KafkaProperties {
     private ProducerConfig producer;
     private ConsumerConfig consumer;
-    
+
     @Data
     public static class ProducerConfig {
         private int retries;
@@ -20,7 +20,7 @@ public class KafkaProperties {
         private String valueSerializer;
         private String acks;
     }
-    
+
     @Data
     public static class ConsumerConfig {
         private String groupId;

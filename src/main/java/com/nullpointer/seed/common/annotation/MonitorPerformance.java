@@ -1,4 +1,4 @@
-package com.nullpointer.seed.annotation;
+package com.nullpointer.seed.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.nullpointer.seed.aop;
+package com.nullpointer.seed.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class LoggingAspect {
-    
+
     @Around("execution(* com.nullpointer.seed.controllers.*.*(..))")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();

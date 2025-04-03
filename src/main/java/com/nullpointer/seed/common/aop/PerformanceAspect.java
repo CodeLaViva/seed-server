@@ -1,4 +1,4 @@
-package com.nullpointer.seed.aop;
+package com.nullpointer.seed.common.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,17 +10,17 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class PerformanceAspect {
-    
-    @Around("@annotation(com.nullpointer.seed.annotation.MonitorPerformance)")
+
+    @Around("@annotation(com.nullpointer.seed.common.annotation.MonitorPerformance)")
     public Object measureMethodExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
         Object result = joinPoint.proceed();
         long executionTime = System.currentTimeMillis() - start;
-        
+
         if (executionTime > 1000) {
             log.warn("方法 {} 执行时间过长: {}ms", joinPoint.getSignature(), executionTime);
         }
-        
+
         return result;
     }
 }

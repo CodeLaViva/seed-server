@@ -1,7 +1,7 @@
 package com.nullpointer.seed.controllers;
 
-import com.nullpointer.seed.annotation.MonitorPerformance;
-import com.nullpointer.seed.clients.SampleClient;
+import com.nullpointer.seed.common.annotation.MonitorPerformance;
+import com.nullpointer.seed.controllers.clients.SampleClient;
 import com.nullpointer.seed.dto.request.SampleRequest;
 import com.nullpointer.seed.dto.response.SampleResponse;
 import com.nullpointer.seed.services.SampleService;
