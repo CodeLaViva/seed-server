@@ -1,7 +1,8 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.2'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.github.ben-manes.versions' version '0.47.0'
 }
 
 group = 'com.nullpointer'
@@ -43,38 +44,38 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    
+
     // Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    
+
     // Database
     implementation 'mysql:mysql-connector-java:8.0.33'
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.flywaydb:flyway-mysql'
-    
+
     // Utils
-    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-    implementation 'com.alibaba:fastjson:2.0.45'
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'org.mapstruct:mapstruct:1.6.2'
+    implementation 'com.alibaba:fastjson:2.0.53'
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-    
+
     // Kafka
     implementation 'org.springframework.kafka:spring-kafka'
-    
+
     // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    
+
     // Annotation Processors
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-    
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.1'
+
     // Test Dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'org.testcontainers:testcontainers:1.19.3'
-    testImplementation 'org.testcontainers:junit-jupiter:1.19.3'
-    testImplementation 'org.testcontainers:mysql:1.19.3'
+    testImplementation 'org.testcontainers:testcontainers:1.20.2'
+    testImplementation 'org.testcontainers:junit-jupiter:1.20.2'
+    testImplementation 'org.testcontainers:mysql:1.20.2'
     testImplementation 'com.h2database:h2'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
@@ -90,3 +91,12 @@ tasks.named('test') {
 //     from new File(rootProject.rootDir, './scripts/git/commit-msg')
 //     into { new File(project.projectDir, './.git/hooks') }
 // }
+
+
+// Add dependency updates configuration
+dependencyUpdates {
+    checkConstraints = true
+    outputFormatter = 'html'  // Creates an HTML report
+    outputDir = "build/dependency-reports"
+    reportfileName = 'report'
+}
