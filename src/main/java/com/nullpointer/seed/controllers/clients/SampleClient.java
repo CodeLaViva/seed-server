@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(name = "sample-service", url = "${sample.service.url:http://localhost:6666}")
 public interface SampleClient {
 
-    @GetMapping("/sample/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<SampleResponse> getSample(@PathVariable("id") Integer id);
 
-    @PostMapping("/sample")
+    @PostMapping()
     ResponseEntity<SampleResponse> createSample(@RequestBody SampleRequest request);
 
-    @DeleteMapping("/sample/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<Boolean> deleteSample(@PathVariable("id") Integer id);
 }

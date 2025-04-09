@@ -12,13 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * @author lihongzheng
- * @date 2021/6/6
- * @description sample controller, follow by restful
- */
 @RestController
-@RequestMapping("/sample")
+@RequestMapping("/samples")
 @Slf4j
 @AllArgsConstructor
 public class SampleController implements SampleClient {
@@ -45,11 +40,11 @@ public class SampleController implements SampleClient {
         return ResponseEntity.ok(response);
     }
 
-    public ResponseEntity<SampleResponse> update(@RequestParam SampleRequest sample) {
+    public ResponseEntity<SampleResponse> update(@RequestParam SampleRequest request) {
         return ResponseEntity.ok(null);
     }
 
-    public ResponseEntity<SampleResponse> patch(@RequestParam SampleRequest sample) {
+    public ResponseEntity<SampleResponse> patch(@RequestParam SampleRequest request) {
         return ResponseEntity.ok(null);
     }
 }

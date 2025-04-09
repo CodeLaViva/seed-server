@@ -16,9 +16,9 @@ class SampleControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // @Test
+     @Test
     void shouldGetSample() throws Exception {
-        mockMvc.perform(get("/sample/1"))
+        mockMvc.perform(get("/samples/1"))
                 .andExpect(status().isOk());
     }
 }
