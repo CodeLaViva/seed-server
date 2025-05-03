@@ -12,7 +12,7 @@ spring:
       - kafka.yml
 
   datasource:
-    url: jdbc:mysql://120.48.21.80:3306/sample?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/sample?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     type: com.zaxxer.hikari.HikariDataSource

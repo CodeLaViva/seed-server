@@ -3,7 +3,7 @@ app:
 
 spring:
   datasource:
-    url: jdbc:mysql://prod-db:3306/sample
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/sample?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   kafka:
